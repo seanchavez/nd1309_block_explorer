@@ -5,14 +5,17 @@ const be = require('blockexplorer');
 
 /**
  *  Explore Block Data function
- * @param {*} index 
- * 
+ * @param {*} index
+ *
  * Start by requesting the hash then request the block and use console.log()
- * 
+ *
  */
 function getBlock(index) {
-  	//add your code here
-  	
+  //add your code here
+  const hash = be.blockIndex(index);
+  hash.then(response => {
+    console.log(response);
+  });
 }
 
 /**
@@ -20,10 +23,12 @@ function getBlock(index) {
  * Nothing to implement here.
  */
 
-(function theLoop (i) {
-	setTimeout(function () {
-        getBlock(i);
-        i++;
-		if (i < 3) theLoop(i);
-	}, 3000);
-  })(0);
+(function theLoop(i) {
+  setTimeout(function() {
+    getBlock(i);
+    i++;
+    if (i < 3) theLoop(i);
+  }, 3000);
+})(0);
+
+getBlock(2);
